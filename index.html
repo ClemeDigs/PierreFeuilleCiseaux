@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css"/>
+    <script src="app.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Pierre, Feuille, Ciseaux</h1>
+    </header>
+
+    <main>
+
+        <div class="score-board">
+            <div class="badge user-badge">Ton score</div>
+            <div class="badge comp-badge">Score de l'AI</div>
+            <span class="user-score">0</span>
+            <span>:</span>
+            <span class="computer-score">0</span>
+        </div>
+
+        <div class="result">
+            <p>La pierre brise les ciseaux, la feuille couvre la pierre, les ciseaux coupent la feuille.</p>
+        </div>
+
+        <div class="choices">
+
+            <div class="choice rock">
+                <img src="./img/pierre.png" alt="pierre">
+            </div>
+
+            <div class="choice paper">
+                <img src="./img/feuille.png" alt="feuille">
+            </div>
+
+            <div class="choice scissors">
+                <img src="./img/ciseaux.png" alt="ciseaux">
+            </div>
+        
+        </div>
+
+        <p class="action-msg">Fais ton choix !</p>
+    </main>
+</body>
+</html>

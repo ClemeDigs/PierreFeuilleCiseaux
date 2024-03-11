@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+
+body {
+    background-color: black;
+    color: white;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Madimi One", sans-serif;
+}
+
+header {
+    background-color: black;
+    padding: 5px;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 400;
+    font-size: 3rem;
+}
+
+img {
+    width: 120px;
+    height: 120px;
+}
+
+.score-board {
+    margin: 50px auto;
+    border: 3px solid green;
+    border-radius: 50px;
+    width: 200px;
+    font-size: 4rem;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+}
+
+.badge {
+    background-color: green;
+    font-size: 1rem;
+    padding: 2px 10px;
+    border: 2px solid grey;
+    border-radius: 50px;
+}
+
+.user-badge {
+    position: absolute;
+    top: 40px;
+    left: -50px;
+}
+
+.comp-badge {
+    position: absolute;
+    top: 40px;
+    right: -70px;
+}
+
+.result p {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.choices {
+    margin: 80px 20px;
+    text-align: center;
+}
+
+.choice {
+    display: inline-block;
+    margin: 0 50px;
+}
+
+.rock {
+    border: 5px double grey;
+    border-radius: 600px;
+    padding: 30px;
+}
+
+.rock:hover {
+    box-shadow: inset 5px 5px 40px 20px rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.rock-user-selected {
+    border: 5px solid rgb(255, 255, 255);
+}
+
+.rock-comp-selected {
+    border: 5px solid rgb(242, 255, 0);
+}
+
+.paper {
+    border: 5px double green;
+    border-radius: 600px;
+    padding: 30px;
+}
+
+.paper:hover {
+    box-shadow: inset 5px 5px 40px 20px rgba(0, 255, 64, 0.2);
+    cursor: pointer;
+}
+
+.paper-user-selected {
+    border: 5px solid rgb(255, 255, 255);
+}
+
+.paper-comp-selected {
+    border: 5px solid rgb(242, 255, 0);
+}
+
+.scissors {
+    border: 5px double red;
+    border-radius: 600px;
+    padding: 30px;
+}
+
+.scissors:hover {
+    box-shadow: inset 5px 5px 40px 20px rgba(255, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.scissors-user-selected {
+    border: 5px solid rgb(255, 255, 255);
+}
+
+.scissors-comp-selected {
+    border: 5px solid rgb(242, 255, 0);
+}
+
+.action-msg {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.disable-click {
+    pointer-events: none;
+}
