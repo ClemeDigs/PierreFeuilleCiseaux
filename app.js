@@ -1,13 +1,11 @@
 // Sélectionner les éléments du DOM
 let userScore = document.querySelector('.user-score');
 let compScore = document.querySelector('.computer-score');
-let rock = document.querySelector('.rock');
-let paper = document.querySelector('.paper');
-let scissors = document.querySelector('.scissors');
 let result = document.querySelector('.result p');
 let userScoreActive = 0;
 let compScoreActive = 0;
 let turn = false
+let choices = document.querySelectorAll('.choice');
 
 
 function getRandomNumber() {
@@ -16,17 +14,13 @@ function getRandomNumber() {
 
 function startTurn() {
     turn = true;
-    rock.classList.add('disable-click');
-    paper.classList.add('disable-click');
-    scissors.classList.add('disable-click');
+    document.body.classList.add('disable-click');
 }
 
-function endTurn(){
+function endTurn() {
     turn = false;
     resetAfterDelay();
-    rock.classList.remove('disable-click');
-    paper.classList.remove('disable-click');
-    scissors.classList.remove('disable-click');
+    document.body.classList.remove('disable-click');
 }
 
 function updateScore() {
@@ -35,9 +29,7 @@ function updateScore() {
 }
 
 function resetSelection() {
-    rock.classList.remove('rock-user-selected', 'rock-comp-selected');
-    scissors.classList.remove('scissors-comp-selected', 'scissors-user-selected');
-    paper.classList.remove('paper-comp-selected', 'paper-user-selected');
+    choices.forEach(choice => choice.classList.remove('user-selected', 'comp-selected'));
 }
 
 function resetAfterDelay() {
@@ -63,72 +55,42 @@ function userWins() {
 }
 
 function compChoice(getRandomNumber) {
-    if (getRandomNumber === 0) {
-        rock.classList.add('rock-comp-selected');
-    } else if (getRandomNumber === 1) {
-        paper.classList.add('paper-comp-selected');
-    } else {
-        scissors.classList.add('scissors-comp-selected');
-    }
+    const compChoice = getRandomNumber;
+    choices[compChoice].classList.add('comp-selected');
 }
 
+for (let choice of choices) {
+    choice.addEventListener('click', () => {
+        startTurn();
+        choice.classList.add('user-selected');
 
-rock.addEventListener('click', () => {
-    startTurn();
-    rock.classList.add('rock-user-selected');
+        setTimeout(() => {
+            const compChoiceValue = getRandomNumber();
+            compChoice(compChoiceValue);
 
-    setTimeout(() => {
-        const compChoiceValue = getRandomNumber();
-        compChoice(compChoiceValue);
+            const userChoice = choice.dataset.choice;
 
-        if (compChoiceValue === 0) {
-            matchNul();
-        } else if (compChoiceValue === 1) {
-            userLoses();
-        } else {
-            userWins();
-        }
-
-        endTurn();
-    }, 1000);
-});
-
-paper.addEventListener('click', () => {
-    startTurn();
-    paper.classList.add('paper-user-selected');
-
-    setTimeout(() => {
-        const compChoiceValue = getRandomNumber();
-        compChoice(compChoiceValue);
-
-        if (compChoiceValue === 0) {
-            userWins();
-        } else if (compChoiceValue === 1) {
-            matchNul();
-        } else {
-            userLoses();
-        }
-
-        endTurn();
-    }, 1000);
-});
-
-scissors.addEventListener('click', () => {
-    startTurn();
-    scissors.classList.add('scissors-user-selected');
-
-    setTimeout(() => {
-        const compChoiceValue = getRandomNumber();
-        compChoice(compChoiceValue);
-
-        if (compChoiceValue === 0) {
-            userLoses();
-        } else if (compChoiceValue === 1) {
-            userWins();
-        } else {
-            matchNul();
-        }
-
-        endTurn();
-    }, 1000);
-});
+            if (compChoiceValue === 0 && userChoice === 'rock') {
+                matchNul();
+            } else if (compChoiceValue === 1 && userChoice === 'rock') {
+                userLoses(); 
+            } else if (compChoiceValue === 2 && userChoice === 'rock') {
+                userWins();
+            } else if (compChoiceValue === 0 && userChoice === 'paper') {
+                userWins();
+            } else if (compChoiceValue === 1 && userChoice === 'paper') {
+                matchNul();
+            } else if (compChoiceValue === 2 && userChoice === 'paper') {
+                userLoses();
+            } else if (compChoiceValue === 0 && userChoice === 'scissors') {
+                userLoses();
+            } else if (compChoiceValue === 1 && userChoice === 'scissors') {
+                userWins();
+            } else if (compChoiceValue === 2 && userChoice === 'scissors') {
+                matchNul();
+            }
+            
+            endTurn();
+        }, 1000);
+    });
+};
